@@ -1,16 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
-    <link rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snake — Bored Games</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="container" role="application" aria-label="Snake game">
+    <header>
+      <div class="brand">
+        <div class="brand-badge">SG</div>
+        <h1>Snake — Bored Games</h1>
+      </div>
 
-    <h1>Snake Game</h1>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    
-    <script src="script.js"></script>
+      <div class="top-controls">
+        <div class="info">Use arrow keys or WASD • Swipe on mobile</div>
+      </div>
+    </header>
+
+    <section class="game-wrap panel" aria-labelledby="game-title">
+      <div class="game-header">
+        <div>
+          <div id="game-title" class="title">Classic Snake</div>
+          <small class="hint">Eat food to grow. Avoid walls and yourself (unless wrap mode is ON).</small>
+        </div>
+
+        <div class="meta">
+          <div class="score-block">
+            <div class="label">Score</div>
+            <div id="score" class="big">0</div>
+            <div class="label">Best: <span id="best">0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="gameCanvas" width="480" height="480" aria-label="Snake game canvas"></canvas>
+      </div>
+
+      <div class="controls-row">
+        <div class="controls">
+          <button id="startBtn" class="primary">Start</button>
+          <button id="pauseBtn">Pause</button>
+          <button id="resetBtn">Restart</button>
+          <button id="soundToggle">🔊</button>
+        </div>
+
+        <div class="options">
+          <label>Speed
+            <select id="speedSel" aria-label="Speed selector">
+              <option value="6">Easy</option>
+              <option value="9" selected>Normal</option>
+              <option value="12">Fast</option>
+              <option value="16">Insane</option>
+            </select>
+          </label>
+
+          <label><input type="checkbox" id="wrapToggle"> Wrap walls</label>
+          <label><input type="checkbox" id="obstaclesToggle"> Obstacles</label>
+        </div>
+      </div>
+
+      <div class="touch-controls">
+        <button data-dir="up">↑</button>
+        <div class="row">
+          <button data-dir="left">←</button>
+          <button data-dir="down">↓</button>
+          <button data-dir="right">→</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="sidebar panel" aria-label="Game info and controls">
+      <div>
+        <h3>How to play</h3>
+        <p class="info">Move the snake to collect food. Each food gives points and increases length. Bonus food appears occasionally and expires. Obstacles are added when enabled.</p>
+        <ul>
+          <li>Arrow keys / WASD</li>
+          <li>Swipe on mobile</li>
+          <li>Pause and restart anytime</li>
+        </ul>
+      </div>
+
+      <div class="stats">
+        <h3>Stats</h3>
+        <div class="info">Moves: <span id="moves">0</span></div>
+        <div class="info">Length: <span id="length">3</span></div>
+        <div class="info">Mode: <span id="mode">Classic</span></div>
+      </div>
+
+      <div class="scoreboard">
+        <h3>Scoreboard</h3>
+        <ol id="scoreboardList" class="scoreboard-list"></ol>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button id="clearScores">Clear Scores</button>
+        </div>
+      </div>
+
+      <div class="credits">
+        <small>Made with ❤️ — open-source</small>
+      </div>
+    </aside>
+
+    <div class="footer">Tips: Try Normal or Fast for fun. Bonus food gives more points but disappears after a short time.</div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
